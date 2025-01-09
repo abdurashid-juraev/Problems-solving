@@ -6,6 +6,9 @@ Your task is to debug the code before your plants die!
 */
 
 function rainAmount(mm) {
-  return mm < 41 ? 50 - mm : 0;
+  if (mm > 40) {
+    return "Your plant has had more than enough water for today!";
+  } else {    
+    return "Your plant has had less water than recommended.";
+  }
 }
-console.log(rainAmount(41));
