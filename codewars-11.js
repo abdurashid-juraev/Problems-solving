@@ -27,6 +27,6 @@ Examples
 // console.log(countStrings("ABC123!@€£#$%^&*()_-+=}{[]|':;?/>.<,~"));
 let str = "ABC123!@€£#$aa%^&*()_-+=}{[]|':;?/>.<,~";
 
-let str2 = str.split('').filter(char=> char >= 'a' && char <= 'z').length;
+let str2 = str.split("").filter((char) => char >= "a" && char <= "z").length;
 
 console.log(str2);

@@ -1,16 +1,21 @@
 /*
-There are pillars near the road. The distance between the pillars is the same and the width of the pillars is the same. Your function accepts three arguments:
+In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
 
-number of pillars (≥ 1);
-distance between pillars (10 - 30 meters);
-width of the pillar (10 - 50 centimeters).
-Calculate the distance between the first and the last pillar in centimeters (without the width of the first and last pillar).
+Examples
+makeNegative(1);    // return -1
+makeNegative(-5);   // return -5
+makeNegative(0);    // return 0
+makeNegative(0.12); // return -0.12
+Notes
+The number can be negative already, in which case no change is required.
+Zero (0) is not checked for any specific sign. Negative zeros make no mathematical sense.
 */
-// function pillars(numPillars, distance, width) {
-//   if (numPillars <= 1) {
-//     return 0;
-//   }
 
-//   return distance * 100 * (numPillars - 1) + width * (numPillars - 2);
-// }
-// console.log(pillars(2, 20, 25));
+function f(n) {
+  if (n > 0) {
+    return n * -1;
+  } else {
+    return n;
+  }
+}
+console.log(f(-9));
