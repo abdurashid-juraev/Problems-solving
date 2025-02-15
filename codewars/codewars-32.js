@@ -42,7 +42,7 @@ Examples
 94  -->  "doksan dört"
 Good luck, or iyi şanslar :)
 */
-function turkishNumber(n) {
+function getTurkishNumber(num) {
   const units = [
     "sıfır",
     "bir",
@@ -66,13 +66,13 @@ function turkishNumber(n) {
     "seksen",
     "doksan",
   ];
-  const num = n.toString().split("");
-  if (num.length === 1) {
-    return units[n];
+  const number = num.toString().split("");
+  if (number.length === 1) {
+    return units[number];
   }
-  if (num.length === 2) return tens[num[0] - 1] + " " + units[num[0]];
-  if (num.length === 3) {
+  if (number.length === 2) return tens[number[1] - 1] + " " + units[number[0]];
+  if (number.length === 3) {
     return "yuz yo yuzdan buyuk";
   }
 }
-console.log(turkishNumber(101));
+console.log(getTurkishNumber(16));
