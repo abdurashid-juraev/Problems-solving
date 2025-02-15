@@ -1,15 +1,36 @@
 /*
-Timothy (age: 16) really likes to smoke. Unfortunately, he is too young to buy his own cigarettes and that's why he has to be extremely efficient in smoking.
+Given a board of NxN, distributed with tiles labeled 0 to N² - 1(inclusive):
 
-It's now your task to create a function that calculates how many cigarettes Timothy can smoke out of the given amounts of bars and boxes:
+A solved grid will have the tiles in order of label, left to right, top to bottom.
 
-a bar has 10 boxes of cigarettes,
-a box has 18 cigarettes,
-out of 5 stubs (cigarettes ends) Timothy is able to roll a new one,
-of course the self made cigarettes also have an end which can be used to create a new one...
-Please note that Timothy never starts smoking cigarettes that aren't "full size" so the amount of smoked cigarettes is always an integer.
+Return true if the board state is currently solved, and false if the board state is unsolved.
+
+Input will always be a square 2d array.
+
+For example, a 2x2 solved grid:
+
+[ [0, 1],
+  [2, 3] ]
+A 2x2 unsolved grid:
+
+[ [2, 1],
+  [0, 3] ]
 */
-function startSmoking(bars, boxes) {
-  return Math.floor((bars * 10 * 18 + boxes * 18) / 5);
+function isSolved(board) {
+  let correct = 0;
+
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board.length; j++) {
+      if (board[i][j] !== correct) return false;
+
+      correct++;
+    }
+  }
+  return true;
 }
-console.log(startSmoking(1, 1));
+console.log(
+  isSolved([
+    [0, 1],
+    [2, 3],
+  ])
+);
