@@ -40,14 +40,14 @@ Constraints:
 digits does not contain any leading 0's.
 */
 var plusOne = function (digits) {
-  let nums = (parseInt(digits.join("")) + 1).toString().split("");
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] > 0) {
-      nums[i] = parseInt(nums[i]);
+  for (let i = digits.length - 1; i >= 0; i--) {
+    if (digits[i] < 9) {
+      digits[i]++;
+      return digits;
     }
+    digits[i] = 0;
   }
-  console.log(nums);
-
-  return nums;
+  digits.unshift(1);
+  return digits;
 };
 plusOne([1, 2, 3]);
