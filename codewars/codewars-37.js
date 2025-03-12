@@ -1,14 +1,22 @@
 /*
-A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+Create a function that accepts an array of names, and returns an array of each name with its first letter capitalized and the remainder in lowercase.
 
-Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+Examples
+['jo', 'nelson', 'jurie'] -->  ['Jo', 'Nelson', 'Jurie']
+['KARLY', 'DANIEL', 'KELSEY'] --> ['Karly', 'Daniel', 'Kelsey']
 */
-
-function isPangram(string) {
-  let newStr = string.split("");
-
-  console.log(newStr);
-
-  return newStr;
+let arr = ["JO", "DOE", "NAME"];
+function capMe(names) {
+  let str = [];
+  for (let i = 0; i < names.length; i++) {
+    if (
+      names[i] === names[i].toLowerCase() ||
+      names[i] === names[i].toUpperCase()
+    )
+      str.push(
+        names[i].charAt(0).toUpperCase() + names[i].substring(1).toLowerCase()
+      );
+  }
+  return str;
 }
-isPangram("The quick brown fox jumps over the lazy dog.");
+console.log(capMe(arr));
