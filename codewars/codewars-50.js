@@ -1,29 +1,27 @@
 /*
-Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
 
-Examples:
+For example,
 
-* 'abc' =>  ['ab', 'c_']
-* 'abcdef' => ['ab', 'cd', 'ef']
+[true,  true,  true,  false,
+  true,  true,  true,  true ,
+  true,  false, true,  false,
+  true,  false, false, true ,
+  true,  true,  true,  true ,
+  false, false, true,  true]
+The correct answer would be 17.
+
+Hint: Don't forget to check for bad values like null/undefined
 */
-let str = "abcdef";
-let nums = [];
-let odd = [];
-let even = [];
-function solution(str) {
-  // let str = str.split("");
-  for (let i = 0; i <= str.length - 1; i++) {
-    if ((i % 2 === 0) === true) {
-      odd.push(str[i]);
-    }
-    if ((i % 2 === 0) === false) {
-      even.push(str[i]);
+function countSheeps(sheep) {
+  let sheeps = [];
+  for (let i = 0; i < sheep.length; i++) {
+    if (!sheep[i] === null || undefined || "" || false || typeof "number") {
+      if (sheep[i] === true) {
+        sheeps.push(sheep[i]);
+      }
     }
   }
 
-  console.log(odd);
-  console.log(even);
-
-  return str;
+  return sheeps.length;
 }
-solution(str);
