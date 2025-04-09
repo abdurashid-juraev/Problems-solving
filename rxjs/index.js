@@ -1,34 +1,19 @@
-// const { Observable } = require("rxjs");
-// const { map } = require("rxjs/operators");
-const { interval, take } = require("rxjs");
-const arr = [1, 2, 3, 4, 5, 6, 7, 8];
+const symbols = [
+  { symbol: "XFX", price: 240.22, volume: 2323 },
+  { symbol: "TNZ", price: 212, volume: 222 },
+  { symbol: "JXJ", price: 222, volume: 111 },
+];
 
-// const observable = new Observable((subscriber) => {
-//   subscriber.next(arr);
-// });
+function getStockSymbols(arr) {
+  let newArr = [];
+  // for (let i = 0; i < arr.length; i++) {
+  //   newArr.push(arr[i].symbol);
+  // }
+  arr.forEach((element) => {
+    newArr.push(element.symbol);
+  });
+  console.log(JSON.stringify(newArr));
+  return newArr;
+}
 
-// const observer = {
-//   next: (value) => {
-//     console.log("Next " + value);
-//   },
-//   error: (err) => {
-//     console.log("Error " + err);
-//   },
-//   complete: () => {
-//     console.log("Strem is complete");
-//   },
-// };
-
-// observable
-//   .pipe(
-//     map((arr) => {
-//       console.log("map");
-//       return arr.map((item) => item * 2);
-//     })
-//   )
-//   .subscribe(observer);
-
-const source$ = interval(2000);
-source$.pipe(take(8)).subscribe(() => {
-  console.log("hello");
-});
+getStockSymbols(symbols);
