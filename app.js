@@ -1,15 +1,14 @@
-function fn(n) {
-  let arr = n.toString().split("");
-  let m = 1;
-  let a = 0;
-  let sum = 0;
-  for (let i = 0; i < arr.length; i++) {
-    m = m * +arr[i];
-    a = a + +arr[i];
+//function strStr(haystack, needle) {
+//  return haystack.indexOf(needle);
+//}
+//console.log(strStr("sadbutsad", "sado"));
+
+function singleNumber(nums) {
+  let result = [0];
+  for (let i = 0; i < nums.length; i++) {
+    result = result ^ nums[i];
   }
-  sum = +m - a;
-  console.log(m, +" " + a + " " + sum);
-  return sum;
+  return result;
 }
-let n = 234;
-fn(n);
+let nums = [4, 1, 2, 1, 2];
+console.log(singleNumber(nums));
