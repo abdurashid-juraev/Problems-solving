@@ -1,27 +1,14 @@
-//function romanToInt(s) {
-//  const romanValues = {
-//    I: 1,
-//    V: 5,
-//    X: 10,
-//    L: 50,
-//    C: 100,
-//    D: 500,
-//    M: 1000,
-//  };
-
-//  let total = 0;
-//  let prevValue = 0;
-
-//  for (let i = s.length - 1; i >= 0; i--) {
-//    const currentValue = romanValues[s[i]];
-//    if (currentValue < prevValue) {
-//      total -= currentValue;
-//    } else {
-//      total += currentValue;
-//    }
-//    prevValue = currentValue;
-//  }
-
-//  return total;
+//function strStr(haystack, needle) {
+//  return haystack.indexOf(needle);
 //}
-//console.log(romanToInt("IV"));
+//console.log(strStr("sadbutsad", "sado"));
+
+function singleNumber(nums) {
+  let result = [0];
+  for (let i = 0; i < nums.length; i++) {
+    result = result ^ nums[i];
+  }
+  return result;
+}
+let nums = [4, 1, 2, 1, 2];
+console.log(singleNumber(nums));
