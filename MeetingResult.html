@@ -53,6 +53,8 @@
       font-size: 20px;
       margin-bottom: 24px;
       text-align: center;
+      margin: 10px auto;
+      width: 800px;
     }
 
     .bolder-title {
@@ -170,8 +172,8 @@
       align-items: flex-start;
     }
 
-    .min-w-180 {
-      min-width: 180px;
+    .min-w-250 {
+      min-width: 250px;
     }
 
     .font-normal {
@@ -186,39 +188,33 @@
 
   <body>
     <div class="container">
-      <div class="title">Suhbat natijalari</div>
+      <div class="title">*meeting_result</div>
       <div class="box">
-        <div class="main-title">
-          Maktabgacha va maktab ta'limi vazirligi tizimidagi umumiy o'rta ta'lim
-          <br />
-          tashkilotlariga jalb etish maqsadida nomzod bilan o'tkazilagn suhbat
-        </div>
-        <div class="bolder-title mb-32">XULOSASI</div>
+        <div class="main-title">*meeting_result_title</div>
+        <div class="bolder-title mb-32">*summary</div>
         <div class="flex items-start pt-32">
           <div class="card w-50">
             <div class="card-img">
-              <img src="https://picsum.photos/200" alt="">
+              <img src="#userProfilePhoto" alt="">
             </div>
-            <table>
-              <tr></tr>
-            </table>
+
             <table>
               <tbody>
                 <tr>
-                  <td class=" font-semibold font-normal">Status</td>
-                  <td class=" font-semibold green">Qabul qilindi</td>
+                  <td class=" font-semibold ">*meeting_status</td>
+                  <td class=" font-normal green">#Status</td>
                 </tr>
                 <tr>
-                  <td class=" font-semibold font-normal">F.I.SH</td>
-                  <td class=" font-semibold ">Gulchehra Xasan qizi Turgunova</td>
+                  <td class=" font-semibold ">*full_name_applicant</td>
+                  <td class=" font-normal ">#ApplicantFullName</td>
                 </tr>
                 <tr>
-                  <td class=" font-semibold font-normal">Tug'ilgan yili</td>
-                  <td class=" font-semibold ">1999.01.02</td>
+                  <td class=" font-semibold ">*birthdate</td>
+                  <td class=" font-normal ">#BirthDay</td>
                 </tr>
                 <tr>
-                  <td class="min-w-180 font-semibold font-normal">Vakansiya nomi</td>
-                  <td class=" font-semibold ">Ingliz tili</td>
+                  <td class="min-w-250 font-semibold ">*vacancyName</td>
+                  <td class=" font-normal ">#VacancyName</td>
                 </tr>
               </tbody>
             </table>
@@ -227,145 +223,145 @@
 
         </div>
       </div>
-      <div class="title">Nomzod haqida</div>
+      <div class="title">*candidate_forms</div>
       <div class="box">
         <form>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Ona tili</div>
+              <div>*native_language</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl flex items-center">
+            <div class="font-normal flex items-center">
               <label for="a1" class="mr-10">
-                <input class="mr-10" type="radio" id="a1" name="answer" />
-                <span>Ha</span>
+                <input class="mr-10" type="radio" id="a1" name="answer" #ApplicantLanguageIsNativeYes />
+                <span>*yes</span>
               </label>
               <label for="a2" class="mr-10">
-                <input class="mr-10" type="radio" id="a2" name="answer" />
-                <span>Yo'q</span>
+                <input class="mr-10" type="radio" id="a2" name="answer" #ApplicantLanguageIsNativeNo />
+                <span>*no</span>
               </label>
             </div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Oxirgi ta'lim darajasi</div>
+              <div>*lastEducationLevel</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">Bakalavr</div>
+            <div class="font-normal">#LastEducationLevel</div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Oxirgi OTM nomi</div>
+              <div>*lastEducationName</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">TATU</div>
+            <div class="font-normal">#LastEducationName</div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Sertifikat tili</div>
+              <div>*certficate_lang</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">Ingliz tili</div>
+            <div class="font-normal">#RefLanguageCertificateLang</div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Til sertifikati</div>
+              <div>*refLanguageCertificate</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">IELTS</div>
+            <div class="font-normal">#LanguageCertificateName</div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Nomzodning umumiy pedagogik ish tajribasi</div>
+              <div>*generalExperience</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl flex items-center">
+            <div class="font-normal flex items-center">
               <label for="b1" class="mr-10">
-                <input class="mr-10" type="radio" id="b1" name="answer2" />
-                <span>0 3 Qabul yili</span>
+                <input class="mr-10" type="radio" id="b1" name="answer1" #PedZeroToThreeYears />
+                <span>0-3</span><span>*year</span>
               </label>
               <label for="b2" class="mr-10">
-                <input class="mr-10" type="radio" id="b2" name="answer2" />
-                <span>0 3 Qabul yili</span>
+                <input class="mr-10" type="radio" id="b2" name="answer1" #PedThreeToSixYears />
+                <span>3-6</span><span>*year</span>
+              </label>
+              <label for="b3" class="mr-10">
+                <input class="mr-10" type="radio" id="b3" name="answer1" #PedSixPlusYears />
+                <span>6+</span><span>*year</span>
               </label>
             </div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Nomzodning xalqaro pedagogik ish tajribasi</div>
+              <div>*internationalExperience</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl flex items-center">
+            <div class="font-normal flex items-center">
               <label for="c1" class="mr-10">
-                <input class="mr-10" type="radio" id="c1" name="answer3" />
-                <span>0 3 Qabul yili</span>
+                <input class="mr-10" type="radio" id="c1" name="answer2" #ZeroToThreeYears />
+                <span>0-3</span><span>*year</span>
               </label>
               <label for="c2" class="mr-10">
-                <input class="mr-10" type="radio" id="c2" name="answer3" />
-                <span>0 3 Qabul yili</span>
+                <input class="mr-10" type="radio" id="c2" name="answer2" #ThreeToSixYears />
+                <span>3-6</span><span>*year</span>
+              </label>
+              <label for="c3" class="mr-10">
+                <input class="mr-10" type="radio" id="c3" name="answer2" #SixPlusYears />
+                <span>6+</span><span>*year</span>
               </label>
             </div>
           </div>
           <div class="flex items-center mb-24">
             <div class="flex dl">
-              <div class="font-normal">Nomzodning jamoa bilan ish tajribasi</div>
+              <div>*hasTeamExperience</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl flex items-center">
+            <div class="font-normal flex items-center">
               <label for="d1" class="mr-10">
-                <input class="mr-10" type="radio" id="d1" name="answer4" />
-                <span>Ha</span>
+                <input class="mr-10" type="radio" id="d1" name="answer4" #HasTeamExperienceYes />
+                <span>*yes</span>
               </label>
               <label for="d2" class="mr-10">
-                <input class="mr-10" type="radio" id="d2" name="answer4" />
-                <span>Yo'q</span>
+                <input class="mr-10" type="radio" id="d2" name="answer4" #HasTeamExperienceNo />
+                <span>*no</span>
               </label>
             </div>
           </div>
           <div class="flex  mb-24">
             <div class="flex dl">
-              <div class="font-normal">Nomzodning umumiy metodik bilimiga ta'rif</div>
+              <div>*candidate_fee</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl flex">
-              <textarea name="text" rows="5" cols="80" id=""></textarea>
+            <div class="font-normal flex">
+              <p style="word-break: break-all; width: 300px; ">#VerdictComment</p>
             </div>
           </div>
       </div>
       <div class="break">
-        <div class="title">Komissiyalar</div>
+        <div class="title">*experts_info</div>
         <div class="box">
           <div class="flex  mb-24">
             <div class="flex dl">
-              <div>Komissiya raisi</div>
+              <div>*chiefExpertFullName</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">Gulchehra Xasan qizi Turgunova</div>
+            <div class="font-normal">
+              #ChiefExperts
+            </div>
           </div>
 
           <div class="flex">
             <div class="flex dl">
-              <div>Darajani ko'rsatish</div>
+              <div>*expertTeacherMembers</div>
               <sub class="red">*</sub>
             </div>
-            <div class="dl">
-              <div class="mb-10">Gulchehra Xasan qizi Turgunova</div>
-              <div class="mb-10">Gulchehra Xasan qizi Turgunova</div>
+            <div class="font-normal">
+              #ExpertTeacherMembers
             </div>
           </div>
         </div>
-        <div class="title">Darajani ko'rsatish</div>
-        <div class="box">
-          <div class="flex  mb-24">
-            <div class="flex dl">
-              <div>Baholovchi</div>
-              <sub class="red">*</sub>
-            </div>
-            <div class="dl">Gulchehra Xasan qizi Turgunova</div>
-          </div>
-        </div>
+        <div class="title">*grades</div>
+        #Grades
       </div>
-
       </form>
     </div>
     </div>
