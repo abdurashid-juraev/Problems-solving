@@ -3,12 +3,14 @@
 //}
 //console.log(strStr("sadbutsad", "sado"));
 
-function singleNumber(nums) {
-  let result = [0];
+let nums = [1, 2, 4, 6];
+
+function fn(nums, target) {
   for (let i = 0; i < nums.length; i++) {
-    result = result ^ nums[i];
+    if (nums[i] >= target) {
+      return i;
+    }
   }
-  return result;
+  return nums.length;
 }
-let nums = [4, 1, 2, 1, 2];
-console.log(singleNumber(nums));
+console.log(fn(nums, 3));
