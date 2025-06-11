@@ -39,33 +39,55 @@ Sample Output : a ( 5 times )
 //  fun
 
 //console.log(chunk(arr, size));
-let obj = {
-  name: "Ali",
-  address: {
-    city: "Tashkent",
-    location: {
-      lat: 41,
-      long: 69,
-    },
-  },
-};
+//let obj = {
+//  name: "Ali",
+//  address: {
+//    city: "Tashkent",
+//    location: {
+//      lat: 41,
+//      long: 69,
+//    },
+//  },
+//};
 
-function flattenObject(obj, objKey = "", result = {}) {
-  for (let key in obj) {
-    const newKey = objKey ? `${objKey}.${key}` : key;
+//function flattenObject(obj, objKey = "", result = {}) {
+//  for (let key in obj) {
+//    const newKey = objKey ? `${objKey}.${key}` : key;
 
-    if (
-      typeof obj[key] === "object" &&
-      obj[key] !== null &&
-      !Array.isArray(obj[key])
-    ) {
-      flattenObject(obj[key], newKey, result);
-    } else {
-      result[newKey] = obj[key];
+//    if (
+//      typeof obj[key] === "object" &&
+//      obj[key] !== null &&
+//      !Array.isArray(obj[key])
+//    ) {
+//      flattenObject(obj[key], newKey, result);
+//    } else {
+//      result[newKey] = obj[key];
+//    }
+//  }
+
+//  return result;
+//}
+
+//console.log(flattenObject(obj));
+
+let arr = [0, 10, 20, 30];
+
+function func(arr) {
+  let newArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 10) {
+      newArr.push(arr[i]);
+    }
+    if (arr[i] === 0) {
+      newArr.push(arr[0]);
+    }
+    if (arr[i] < 0) {
+      newArr.push(arr[i] + 1);
     }
   }
+  console.log(newArr);
 
-  return result;
+  return newArr;
 }
-
-console.log(flattenObject(obj));
+func(arr);
