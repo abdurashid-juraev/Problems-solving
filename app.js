@@ -21,9 +21,61 @@ Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
 
 Sample Output : a ( 5 times )
 */
-async function sleep(millis) {
-  await new Promise((resolve) => setTimeout(resolve, millis));
-  console.log(millis);
-  return millis;
+
+//let str = "aks";
+
+//function palindrom(str) {
+//  return str === str.split("").reverse().join("") ? true : false;
+//}
+//console.log(palindrom(str));
+
+/*
+I - 1
+V - 5
+X - 10
+L - 50
+C - 100
+D - 500
+M - 1000
+*/
+
+function romanAlphabetToNum(str) {
+  let total = 0;
+  for (let i = 0; i < str.length; i++) {
+    let current = romanToNum(str[i]);
+    let next = romanToNum(str[i + 1]);
+    if (next > current) {
+      total = total + next - current;
+      i++;
+    } else {
+      total = total + current;
+    }
+  }
+  console.log(total);
+
+  return total;
 }
-sleep(100);
+romanAlphabetToNum("10");
+function romanToNum(char) {
+  switch (char) {
+    case "I":
+      return 1;
+    case "V":
+      return 5;
+    case "X":
+      return 10;
+    case "L":
+      return 50;
+    case "C":
+      return 100;
+    case "D":
+      return 500;
+    case "M":
+      return 1000;
+
+    default:
+      return 0;
+  }
+}
+
+//console.log(romanAlphabet("I"));
