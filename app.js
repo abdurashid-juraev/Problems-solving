@@ -21,10 +21,11 @@ Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
 
 Sample Output : a ( 5 times )
 */
-//async function sleep(millis) {
-//  await new Promise((resolve) => setTimeout(resolve, millis));
-//  console.log(millis);
-//  return millis;
+
+//let str = "aks";
+
+//function palindrom(str) {
+//  return str === str.split("").reverse().join("") ? true : false;
 //}
 //sleep(100);
 //let createCounter = function (init) {
