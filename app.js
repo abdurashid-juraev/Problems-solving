@@ -70,24 +70,32 @@ Sample Output : a ( 5 times )
 
 //console.log(flattenObject(obj));
 
-let arr = [0, 10, 20, 30];
+//let arr = [0, 10, 20, 30];
 
-function func(arr) {
-  let newArr = [];
+//function func(arr) {
+//  let newArr = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > 10) {
-      newArr.push(arr[i]);
-    }
-    if (arr[i] === 0) {
-      newArr.push(arr[0]);
-    }
-    if (arr[i] < 0) {
-      newArr.push(arr[i] + 1);
-    }
-  }
-  console.log(newArr);
+//  for (let i = 0; i < arr.length; i++) {
+//    if (arr[i] > 10) {
+//      newArr.push(arr[i]);
+//    }
+//    if (arr[i] === 0) {
+//      newArr.push(arr[0]);
+//    }
+//    if (arr[i] < 0) {
+//      newArr.push(arr[i] + 1);
+//    }
+//  }
+//  console.log(newArr);
 
-  return newArr;
-}
-func(arr);
+//  return newArr;
+//}
+//func(arr);
+
+//let createHelloWorld = function (x, {}) {
+//  return function (...args) {
+//    return "Hello World";
+//  };
+//};
+//let fn = createHelloWorld(asa, 2121);
+//fn();
