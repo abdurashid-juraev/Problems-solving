@@ -27,54 +27,86 @@ Sample Output : a ( 5 times )
 //function palindrom(str) {
 //  return str === str.split("").reverse().join("") ? true : false;
 //}
-//console.log(palindrom(str));
+//sleep(100);
+//let createCounter = function (init) {
+//  let countValue = init;
 
-/*
-I - 1
-V - 5
-X - 10
-L - 50
-C - 100
-D - 500
-M - 1000
-*/
+//  function increment() {
+//    return ++countValue;
+//  }
+//  function decrement() {
+//    return --countValue;
+//  }
+//  fun
 
-//console.log(romanAlphabet("I"));
+//console.log(chunk(arr, size));
+//let obj = {
+//  name: "Ali",
+//  address: {
+//    city: "Tashkent",
+//    location: {
+//      lat: 41,
+//      long: 69,
+//    },
+//  },
+//};
 
-//function romanAlphabet(str) {
-//  let total = 0;
-//  for (let i = 0; i < str.length; i++) {
-//    let current = romanToNum(str[i]);
-//    let next = romanToNum(str[i + 1]);
+//function flattenObject(obj, objKey = "", result = {}) {
+//  for (let key in obj) {
+//    const newKey = objKey ? `${objKey}.${key}` : key;
 
-//    if (next > current) {
-//      total = total + next - current;
-//      i++;
+//    if (
+//      typeof obj[key] === "object" &&
+//      obj[key] !== null &&
+//      !Array.isArray(obj[key])
+//    ) {
+//      flattenObject(obj[key], newKey, result);
 //    } else {
-//      total = total + current;
+//      result[newKey] = obj[key];
 //    }
 //  }
-//  return total;
-//}
-//console.log(romanAlphabet("L"));
 
-//function romanToNum(char) {
-//  switch (char) {
-//    case "I":
-//      return 1;
-//    case "V":
-//      return 5;
-//    case "X":
-//      return 10;
-//    case "L":
-//      return 50;
-//    case "C":
-//      return 100;
-//    case "D":
-//      return 500;
-//    case "M":
-//      return 100;
-//    default:
-//      return 0;
-//  }
+//  return result;
 //}
+
+//console.log(flattenObject(obj));
+
+//let arr = [0, 10, 20, 30];
+
+//function func(arr) {
+//  let newArr = [];
+
+//  for (let i = 0; i < arr.length; i++) {
+//    if (arr[i] > 10) {
+//      newArr.push(arr[i]);
+//    }
+//    if (arr[i] === 0) {
+//      newArr.push(arr[0]);
+//    }
+//    if (arr[i] < 0) {
+//      newArr.push(arr[i] + 1);
+//    }
+//  }
+//  console.log(newArr);
+
+//  return newArr;
+//}
+//func(arr);
+
+//let createHelloWorld = function (x, {}) {
+//  return function (...args) {
+//    return "Hello World";
+//  };
+//};
+//let fn = createHelloWorld(asa, 2121);
+//fn();
+var reduce = function (nums, fn, init) {
+  if (nums.length === 0) {
+    return init;
+  }
+  sum = init;
+  for(let i = 0; i < nums.lengthl i++){
+    val = fn(val, nums[i])
+  }
+  return val
+};
