@@ -39,43 +39,42 @@ D - 500
 M - 1000
 */
 
-function romanAlphabetToNum(str) {
-  let total = 0;
-  for (let i = 0; i < str.length; i++) {
-    let current = romanToNum(str[i]);
-    let next = romanToNum(str[i + 1]);
-    if (next > current) {
-      total = total + next - current;
-      i++;
-    } else {
-      total = total + current;
-    }
-  }
-  console.log(total);
-
-  return total;
-}
-romanAlphabetToNum("10");
-function romanToNum(char) {
-  switch (char) {
-    case "I":
-      return 1;
-    case "V":
-      return 5;
-    case "X":
-      return 10;
-    case "L":
-      return 50;
-    case "C":
-      return 100;
-    case "D":
-      return 500;
-    case "M":
-      return 1000;
-
-    default:
-      return 0;
-  }
-}
-
 //console.log(romanAlphabet("I"));
+
+//function romanAlphabet(str) {
+//  let total = 0;
+//  for (let i = 0; i < str.length; i++) {
+//    let current = romanToNum(str[i]);
+//    let next = romanToNum(str[i + 1]);
+
+//    if (next > current) {
+//      total = total + next - current;
+//      i++;
+//    } else {
+//      total = total + current;
+//    }
+//  }
+//  return total;
+//}
+//console.log(romanAlphabet("L"));
+
+//function romanToNum(char) {
+//  switch (char) {
+//    case "I":
+//      return 1;
+//    case "V":
+//      return 5;
+//    case "X":
+//      return 10;
+//    case "L":
+//      return 50;
+//    case "C":
+//      return 100;
+//    case "D":
+//      return 500;
+//    case "M":
+//      return 100;
+//    default:
+//      return 0;
+//  }
+//}
