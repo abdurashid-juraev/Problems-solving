@@ -100,13 +100,11 @@ Sample Output : a ( 5 times )
 //};
 //let fn = createHelloWorld(asa, 2121);
 //fn();
+
 var reduce = function (nums, fn, init) {
-  if (nums.length === 0) {
-    return init;
+  let val = init;
+  for (let i = 0; i < nums.length; i++) {
+    val = fn(val, nums[i]);
   }
-  sum = init;
-  for(let i = 0; i < nums.lengthl i++){
-    val = fn(val, nums[i])
-  }
-  return val
+  return val;
 };
