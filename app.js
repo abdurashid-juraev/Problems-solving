@@ -139,11 +139,11 @@ Sample Output : a ( 5 times )
 //};
 //let fn = createHelloWorld(asa, 2121);
 //fn();
-
-var reduce = function (nums, fn, init) {
-  let val = init;
+var missingNumber = function (nums) {
   for (let i = 0; i < nums.length; i++) {
-    val = fn(val, nums[i]);
+    const next = nums[i] + 1;
+    console.log(next);
   }
-  return val;
 };
+const nums = [1, 2, 4];
+console.log(missingNumber(nums));
