@@ -139,11 +139,17 @@ Sample Output : a ( 5 times )
 //};
 //let fn = createHelloWorld(asa, 2121);
 //fn();
-var missingNumber = function (nums) {
-  for (let i = 0; i < nums.length; i++) {
-    const next = nums[i] + 1;
-    console.log(next);
+
+function fn(n) {
+  if (n % 15 === 0) {
+    return "FizzBuzz";
   }
-};
-const nums = [1, 2, 4];
-console.log(missingNumber(nums));
+  if (n % 3 === 0) {
+    return "Fizz";
+  }
+  if (n % 5 === 0) {
+    return "Buzz";
+  }
+  return n.toString();
+}
+console.log(fn(15));
