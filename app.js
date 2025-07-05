@@ -140,16 +140,25 @@ Sample Output : a ( 5 times )
 //let fn = createHelloWorld(asa, 2121);
 //fn();
 
-function fn(n) {
-  if (n % 15 === 0) {
-    return "FizzBuzz";
+//function fn(n) {
+//  if (n % 15 === 0) {
+//    return "FizzBuzz";
+//  }
+//  if (n % 3 === 0) {
+//    return "Fizz";
+//  }
+//  if (n % 5 === 0) {
+//    return "Buzz";
+//  }
+//  return n.toString();
+//}
+//console.log(fn(15));
+let s = "A man, a plan, a canal: Panama";
+var isPalindrome = function (s) {
+  let str = "";
+  for (let i = 0; i < s.length; i++) {
+    str = s[i].join();
+    console.log(str);
   }
-  if (n % 3 === 0) {
-    return "Fizz";
-  }
-  if (n % 5 === 0) {
-    return "Buzz";
-  }
-  return n.toString();
-}
-console.log(fn(15));
+};
+isPalindrome(s);
