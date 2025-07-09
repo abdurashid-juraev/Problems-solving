@@ -153,30 +153,12 @@ Sample Output : a ( 5 times )
 //  return n.toString();
 //}
 //console.log(fn(15));
-
-//function fn(str) {
-//  return str.split("").reverse().join("");
-//}
-//console.log(fn("tez"));
-
-//function fn(str) {
-//  if (str === str.split("").reverse().join("")) {
-//    return str;
-//  }
-//  return "palindrom emas";
-//}
-//console.log(fn("aks"));
-
-//let arr = [1, 2, 3];
-//var map = function (arr, fn) {
-//  let newArr = [];
-//  for (let i = 0; i < arr.length; i++) {
-//    newArr.push(fn(arr[i], i));
-//  }
-//  return newArr;
-//};
-//console.log(map(arr));
-var argumentsLength = function (...args) {
-  console.log(args.length);
+let s = "A man, a plan, a canal: Panama";
+var isPalindrome = function (s) {
+  let str = "";
+  for (let i = 0; i < s.length; i++) {
+    str = s[i].join();
+    console.log(str);
+  }
 };
-argumentsLength(1, 2, null);
+isPalindrome(s);
