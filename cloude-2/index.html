@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IT Kasblari – Video Ko‘rish Boshqasi</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #000;
+        font-family: sans-serif;
+      }
+      canvas,
+      .label-renderer {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .info {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 1.1em;
+        text-shadow: 1px 1px 4px black;
+        z-index: 10;
+      }
+      /* Tugma styling */
+      .label-button {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: #111;
+        cursor: pointer;
+        user-select: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: background 0.2s;
+      }
+      .label-button:hover {
+        background: rgba(255, 255, 255, 1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="info">
+      Markazdagi bulutga bosib, IT kasblarini ko‘ring yoki “Video ko‘rish”
+      tugmasini bosing.
+    </div>
+
+    <!-- Three.js va GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- CSS2DRenderer (Three.js examples) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/renderers/CSS2DRenderer.js"></script>
+
+    <script>
+      // === SCENE & CAMERA ===
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        innerWidth / innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 30;
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(innerWidth, innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // === CSS2DRenderer for HTML overlays ===
+      const labelRenderer = new THREE.CSS2DRenderer();
+      labelRenderer.setSize(innerWidth, innerHeight);
+      labelRenderer.domElement.classList.add("label-renderer");
+      document.body.appendChild(labelRenderer.domElement);
+
+      // === LIGHTS & FOG ===
+      scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.5);
+      dirLight.position.set(5, 5, 5);
+      scene.add(dirLight);
+      scene.fog = new THREE.FogExp2(0x000000, 0.0015);
+
+      // === STARS (pulsing) ===
+      const starGeo = new THREE.BufferGeometry();
+      const starPos = [];
+      for (let i = 0; i < 2000; i++) {
+        starPos.push(
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000
+        );
+      }
+      starGeo.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(starPos, 3)
+      );
+      const starMat = new THREE.PointsMaterial({
+        size: 1.3,
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.8,
+      });
+      const stars = new THREE.Points(starGeo, starMat);
+      scene.add(stars);
+
+      // === CLOUD SPRITE ===
+      const textureLoader = new THREE.TextureLoader();
+      const cloudTex = textureLoader.load("cloud.png");
+      function createCloudSprite(scale = 8) {
+        const mat = new THREE.SpriteMaterial({
+          map: cloudTex,
+          transparent: true,
+          opacity: 0.95,
+          depthWrite: false,
+        });
+        const spr = new THREE.Sprite(mat);
+        spr.scale.set(scale, scale * 0.65, 1);
+        spr.userData.baseY = spr.position.y;
+        spr.userData.phase = Math.random() * Math.PI * 2;
+        spr.userData.animate = (t) => {
+          spr.position.y =
+            spr.userData.baseY + Math.sin(t + spr.userData.phase) * 0.2;
+        };
+        return spr;
+      }
+
+      // === TEXT (CanvasTexture) ===
+      function createText(msg, size = 1, color = "#222") {
+        const canvas = document.createElement("canvas");
+        canvas.width = 512;
+        canvas.height = 128;
+        const ctx = canvas.getContext("2d");
+        ctx.font = `bold ${size * 60}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.shadowColor = "rgba(0,0,0,0.5)";
+        ctx.shadowBlur = 6;
+        ctx.fillStyle = color;
+        ctx.fillText(msg, canvas.width / 2, canvas.height / 2);
+        const tex = new THREE.CanvasTexture(canvas);
+        const mat = new THREE.MeshBasicMaterial({
+          map: tex,
+          transparent: true,
+        });
+        const geo = new THREE.PlaneGeometry(size * 4, size);
+        return new THREE.Mesh(geo, mat);
+      }
+
+      // === MAIN CLOUD + “IT nima?” ===
+      const mainCloud = createCloudSprite(10);
+      const mainText = createText("IT nima?", 1.3, "#222");
+      mainText.position.set(0, 0, 0); // text centered in sprite
+      mainCloud.add(mainText);
+      scene.add(mainCloud);
+
+      // === HTML “Video ko‘rish” BUTTON ===
+      const btnDiv = document.createElement("div");
+      btnDiv.className = "label-button";
+      btnDiv.innerHTML = "🎥 Video ko‘rish";
+      btnDiv.onclick = () => window.open("https://your.video.url", "_blank");
+      // CSS2DObject attaches HTML to 3D object
+      const btnLabel = new THREE.CSS2DObject(btnDiv);
+      btnLabel.position.set(0, 8, 0); // bulut ustiga biroz ko‘tarib joylashtir
+      mainCloud.add(btnLabel);
+
+      // === PROFESSION CLOUDS ===
+      const professions = [
+        "Dasturchi",
+        "Dizayner",
+        "Tester",
+        "Analitik",
+        "Admin",
+        "Muhandis",
+      ];
+      const profClouds = professions.map((title, i) => {
+        const c = createCloudSprite(6);
+        const t = createText(title, 0.9, "#222");
+        t.position.set(0, 0, 0);
+        c.add(t);
+        c.visible = false;
+        scene.add(c);
+        return c;
+      });
+
+      // === TOGGLE PROFESSIONS AYLANA ===
+      let visible = false;
+      function toggleProfessions() {
+        visible = !visible;
+        const R = 15,
+          step = (Math.PI * 2) / profClouds.length;
+        profClouds.forEach((c, i) => {
+          const ang = i * step;
+          if (visible) {
+            c.visible = true;
+            c.position.set(0, 0, 0);
+            c.scale.set(2, 2, 2);
+            gsap.to(c.position, {
+              x: Math.cos(ang) * R,
+              y: Math.sin(ang) * R,
+              z: 0,
+              duration: 1,
+              delay: i * 0.1,
+              ease: "power3.out",
+            });
+            gsap.to(c.scale, {
+              x: 4,
+              y: 4,
+              duration: 1.1,
+              ease: "elastic.out(1,0.5)",
+              delay: i * 0.1,
+            });
+          } else {
+            gsap.to(c.scale, {
+              x: 0.01,
+              y: 0.01,
+              duration: 0.4,
+              ease: "power2.in",
+              delay: i * 0.05,
+              onComplete: () => (c.visible = false),
+            });
+          }
+        });
+      }
+      // mainCloud bosilganda professionlar chiqsin
+      window.addEventListener("click", (e) => {
+        const mouse = new THREE.Vector2(
+          (e.clientX / innerWidth) * 2 - 1,
+          -(e.clientY / innerHeight) * 2 + 1
+        );
+        const ray = new THREE.Raycaster();
+        ray.setFromCamera(mouse, camera);
+        if (ray.intersectObject(mainCloud, true).length) toggleProfessions();
+      });
+
+      // === ANIM LOOP ===
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const t = clock.getElapsedTime();
+        mainCloud.userData.animate(t);
+        profClouds.forEach((c) => c.visible && c.userData.animate(t));
+        // yulduz puls
+        starMat.opacity = 0.65 + Math.sin(t * 3) * 0.25;
+        renderer.render(scene, camera);
+        labelRenderer.render(scene, camera); // render HTML labels
+      }
+      animate();
+
+      // === RESIZE ===
+      window.addEventListener("resize", () => {
+        camera.aspect = innerWidth / innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth, innerHeight);
+        labelRenderer.setSize(innerWidth, innerHeight);
+      });
+    </script>
+  </body>
+</html>

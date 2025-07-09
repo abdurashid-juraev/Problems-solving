@@ -140,16 +140,43 @@ Sample Output : a ( 5 times )
 //let fn = createHelloWorld(asa, 2121);
 //fn();
 
-function fn(n) {
-  if (n % 15 === 0) {
-    return "FizzBuzz";
-  }
-  if (n % 3 === 0) {
-    return "Fizz";
-  }
-  if (n % 5 === 0) {
-    return "Buzz";
-  }
-  return n.toString();
-}
-console.log(fn(15));
+//function fn(n) {
+//  if (n % 15 === 0) {
+//    return "FizzBuzz";
+//  }
+//  if (n % 3 === 0) {
+//    return "Fizz";
+//  }
+//  if (n % 5 === 0) {
+//    return "Buzz";
+//  }
+//  return n.toString();
+//}
+//console.log(fn(15));
+
+//function fn(str) {
+//  return str.split("").reverse().join("");
+//}
+//console.log(fn("tez"));
+
+//function fn(str) {
+//  if (str === str.split("").reverse().join("")) {
+//    return str;
+//  }
+//  return "palindrom emas";
+//}
+//console.log(fn("aks"));
+
+//let arr = [1, 2, 3];
+//var map = function (arr, fn) {
+//  let newArr = [];
+//  for (let i = 0; i < arr.length; i++) {
+//    newArr.push(fn(arr[i], i));
+//  }
+//  return newArr;
+//};
+//console.log(map(arr));
+var argumentsLength = function (...args) {
+  console.log(args.length);
+};
+argumentsLength(1, 2, null);
